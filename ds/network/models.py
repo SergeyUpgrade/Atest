@@ -44,6 +44,10 @@ class NetworkNode(models.Model):
         verbose_name_plural = 'звенья сети'
 
     def supplier_link(self):
+        """
+        Функция, чтобы представить поставщика кликабельной ссылкой
+        :return:
+        """
         if not self.supplier_id:
             return ''
         info = (self.supplier._meta.app_label, self.supplier._meta.model_name)
@@ -51,6 +55,10 @@ class NetworkNode(models.Model):
         return mark_safe(f'<a href="{admin_url}">{self.supplier}</a>')
 
     def clean(self):
+        """
+        Функция, запрещающая быть поставщиком самого себя
+        :return:
+        """
         if self.supplier and self.pk and self.supplier_id == self.supplier.pk:
             raise ValidationError({
             'supplier': 'Нельзя быть поставщиком самого себя'
