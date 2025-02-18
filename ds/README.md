@@ -7,4 +7,4 @@
 
 Чтобы создать и запустить контейнеры используйте: docker-compose up -d --build
 
-Команда для создания супер юзера python manage.py createsuperuser
+Команда для создания супер юзера: python manage.py createsuperuser
